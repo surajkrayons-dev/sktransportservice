@@ -8,18 +8,20 @@ export default function EcommercePage() {
       {/* ⭐ HERO SECTION */}
       <section className="fixed inset-0 w-full h-screen bg-white flex flex-col items-center justify-start pt-35 z-1">
         <div className="text-center px-4 max-w-7xl mx-auto z-20">
-          <h6 className="text-lg font-semibold bg-blue-100 text-blue-700 px-4 py-2 rounded-full inline-block">
-            Ecommerce
-          </h6>
+          <div className="inline-block bg-gray-100 px-6 py-3 rounded-full">
+            <h6 className="text-lg font-semibold secretWeapon">
+              Ecommerce
+            </h6>
+          </div>
 
-          <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-extrabold secretWeapon leading-tight">
             Your store, your{" "}
             <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-[#bcacd7] to-[#7c9cfc] inline-block">
               success.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl mt-4 text-blue-500 font-semibold">
+          <p className="text-lg md:text-xl mt-4 foundText font-semibold">
             Evidence based ecommerce solutions provided by modern tech partners.
           </p>
         </div>
@@ -74,7 +76,7 @@ export default function EcommercePage() {
       <section className="bg-white relative z-30 pt-0">
         <div className="max-w-6xl mx-auto px-4 py-5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-normal text-blue-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-normal secretWeapon mb-4">
               <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-blue-100 to-blue-400 inline-flex items-center">
                 Shop-worthy
               </span>{" "}
