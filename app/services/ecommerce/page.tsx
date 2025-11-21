@@ -328,6 +328,14 @@ export default function EcommercePage() {
       </section>
 
       <section className="bg-linear-to-t from-[#eef6ff] via-white to-white py-24 relative z-30">
+        <div className="text-center">
+          <h4 className="text-2xl md:text-4xl font-extrabold text-blue-900 mb-9 foundText">
+            Need something different?
+          </h4>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 secretWeapon">
+            What can we help you with?
+          </h2>
+        </div>
       </section>
     </main>
   );
