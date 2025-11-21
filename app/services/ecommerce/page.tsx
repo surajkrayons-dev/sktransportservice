@@ -112,8 +112,8 @@ export default function EcommercePage() {
           </h2>
         </div>
 
-        <div className="relative h-[200vh]">
-          <div className="sticky top-24">
+        <div className="relative lg:h-[200vh] h-auto">
+          <div className="lg:sticky lg:top-24">
             {/* Card 1 */}
             <div className="max-w-7xl mx-auto mt-14 bg-white rounded-3xl p-10 shadow-[0px_25px_80px_rgba(135,175,255,0.45)]">
               {/* STORE TAG */}
@@ -218,8 +218,8 @@ export default function EcommercePage() {
           </div>
         </div>
 
-        <div className="relative h-[200vh] mt-[-100vh]">
-          <div className="sticky top-24 z-20">
+        <div className="relative lg:h-[200vh] h-auto lg:mt-[-100vh] mt-0">
+          <div className="lg:sticky lg:top-24 lg:z-20">
             {/* Card 2 */}
             <div className="max-w-7xl mx-auto mt-14 bg-white rounded-3xl p-10 shadow-[0px_25px_80px_rgba(135,175,255,0.45)]">
               <span className="inline-block mb-4 px-4 py-1 rounded-full text-white font-semibold bg-[#b8a6ff]">
