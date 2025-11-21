@@ -1,0 +1,58 @@
+export const posts = [
+  {
+    id: 1,
+    title: "Savvy Pet Case Study Part 2: Design, Test, Iterate, Repeat",
+    category: "Case Study",
+    tags: ["Web Apps", "Case Study", "UI/UX Design"],
+    image: "/UIUX-thumbnail.webp",
+  },
+  {
+    id: 2,
+    title: "Savvy Pet Case Study Part 1: Laying the Groundwork",
+    category: "Case Study",
+    tags: ["UI/UX Design", "Case Study"],
+    image: "/Webapps-thumbnail.webp",
+  },
+  {
+    id: 3,
+    title: "Rebranding & Website Refresh for Indies Capital Partners",
+    category: "Blog",
+    tags: ["Branding", "Corporate Website"],
+    image: "/Ecommerce-Thumbnail-Default.webp",
+  },
+  {
+    id: 4,
+    title: "How We Designed a Simple UI For Complex SaaS",
+    category: "Blog",
+    tags: ["UI/UX", "SaaS"],
+    image: "/Webapps-thumbnail.webp",
+  },
+  {
+    id: 5,
+    title: "Mobile App UX Refresh for a FinTech Platform",
+    category: "Case Study",
+    tags: ["FinTech", "Mobile App"],
+    image: "/indies-thumbnail.webp",
+  },
+  {
+    id: 6,
+    title: "How Branding Impacts Conversion",
+    category: "Blog",
+    tags: ["Branding", "Marketing"],
+    image: "/Brand Websites-thumbnail.webp",
+  },
+  {
+    id: 7,
+    title: "How Branding Impacts Conversion",
+    category: "Blog",
+    tags: ["Branding", "Marketing"],
+    image: "/WEBP-tfr.webp",
+  },
+  {
+    id: 8,
+    title: "How Branding Impacts Conversion",
+    category: "Blog",
+    tags: ["Branding", "Marketing"],
+    image: "/Singapore Biennale-thumbnail.webp",
+  },
+];
