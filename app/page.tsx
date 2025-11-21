@@ -41,11 +41,18 @@ export default function HomePage() {
   return (
     <main className="relative">
       <section
-        className="hero-bg fixed inset-0 w-full h-screen flex items-center justify-center pointer-events-none bg-center bg-no-repeat"
+        className="
+          hero-bg 
+          fixed inset-0 w-full h-screen 
+          flex items-center justify-center 
+          pointer-events-none 
+          bg-center bg-no-repeat 
+          bg-cover 
+          md:bg-cover 
+          lg:bg-cover
+        "
         style={{
           backgroundImage: "url('/home-1.png')",
-          backgroundAttachment: "fixed",
-          backgroundSize: "cover",
           zIndex: 1,
         }}
       >
@@ -74,7 +81,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
 
       <div className="h-screen"></div>
 
