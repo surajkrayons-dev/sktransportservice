@@ -73,6 +73,14 @@ export default function HomePage() {
               with real UX thinking baked in.
             </span>
           </p>
+
+          <Link
+            href="#contact-form"
+            className="arrow-loop inline-block bg-blue-700 hover:bg-blue-500 text-white py-2 px-10 rounded-full font-semibold transition duration-300 mt-6"
+          >
+            Let&apos;s chat!
+          </Link>
+
         </div>
       </section>
 
