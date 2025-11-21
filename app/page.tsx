@@ -42,7 +42,7 @@ export default function HomePage() {
     <main className="relative">
       <section
         className="fixed inset-0 w-full h-screen flex items-center justify-center pointer-events-none bg-cover bg-center bg-no-repeat"
-        style={{  backgroundImage: "url('/home-1.png')", backgroundAttachment: "fixed",  zIndex: 1 }}
+        style={{  backgroundImage: "url('/About Us Hero.webp')", backgroundAttachment: "fixed",  zIndex: 1 }}
       >
         <div className="absolute inset-0 bg-white opacity-70" />
         <div className="relative text-center px-4 max-w-3xl z-30 pointer-events-auto">
