@@ -109,7 +109,7 @@ a {
 /* ------------------------------------------
 Our Service
 ------------------------------------------- */
-@keyframes fadeSlide {
+/* @keyframes fadeSlide {
   0% {
     opacity: 0;
     transform: translateY(30px);
@@ -126,7 +126,23 @@ Our Service
 
 html {
   scroll-behavior: smooth;
+} */
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+.animate-fade-slide {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
 
 /* hide horizontal scrollbar visually */
 .no-scrollbar::-webkit-scrollbar { display: none; }

@@ -1,18 +1,30 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { useState } from "react";
 
 export default function ContactPage() {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const glassInput =
+    "w-full p-4 rounded-xl bg-white/20 border border-white/40 " +
+    "text-blue-900 placeholder-blue-300 backdrop-blur-xl " +
+    "transition-all duration-300 " +
+    "focus:bg-white/30 focus:border-blue-400 focus:ring-2 focus:ring-blue-300 " +
+    "outline-none shadow-[0_4px_20px_rgba(0,0,0,0.04)]";
+
+  const [loadDropdown, setLoadDropdown] = useState(false);
+  const [bodyDropdown, setBodyDropdown] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    company: "",
     email: "",
-    service: "",
+    whatsapp: "",
+    loadType: "",
+    bodyType: "",
+    fromLocation: "",
+    toLocation: "",
+    loadWeight: "",
     message: "",
   });
 
@@ -20,14 +32,11 @@ export default function ContactPage() {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((s) => ({ ...s, [name]: value }));
-  };
-
-  const handleOptionClick = (opt: string) => {
-    setFormData((s) => ({ ...s, service: opt }));
-    setDropdownOpen(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,9 +47,13 @@ export default function ContactPage() {
     if (
       !formData.name ||
       !formData.phone ||
-      !formData.company ||
+      !formData.whatsapp ||
       !formData.email ||
-      !formData.service ||
+      !formData.loadType ||
+      !formData.bodyType ||
+      !formData.fromLocation ||
+      !formData.toLocation ||
+      !formData.loadWeight ||
       !formData.message
     ) {
       setError("Please fill all required fields.");
@@ -48,6 +61,7 @@ export default function ContactPage() {
     }
 
     setLoading(true);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -56,9 +70,22 @@ export default function ContactPage() {
       });
 
       const data = await res.json();
+
       if (res.ok && data.success) {
         setSuccess(true);
-        setFormData({ name: "", phone: "", company: "", email: "", service: "", message: "" });
+
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          whatsapp: "",
+          loadType: "",
+          bodyType: "",
+          fromLocation: "",
+          toLocation: "",
+          loadWeight: "",
+          message: "",
+        });
       } else {
         setError(data?.error || "Failed to send message. Try again later.");
       }
@@ -110,27 +137,30 @@ export default function ContactPage() {
       </div>
 
       {/* ⭐ Contact Section */}
-      <section id="contact-form" className="relative z-30 py-20 md:py-28 px-4 md:px-10 lg:px-16 bg-white">
+      <section
+        id="contact-form"
+        className="relative z-30 py-20 md:py-28 px-4 md:px-10 lg:px-16 bg-white"
+      >
         <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 items-center">
-
           {/* LEFT SIDE */}
           <div className="flex flex-col gap-6">
-            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight text-blue-900 secretWeapon">
-              We are ready to{" "}
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-blue-900 secretWeapon">
+              Ready when you are. Let&apos;s get your goods
               <span className="inline-flex items-center px-3 py-1 rounded-lg text-white font-bold bg-linear-to-r from-red-300 to-orange-600">
-                rock
+                moving
               </span>
               .
             </h1>
 
-            <p className="text-lg md:text-xl text-blue-500">
-              Ready to roll? Got questions, ideas, or just want to say hi? We&apos;re all ears!
+            <p className="text-lg md:text-xl text-[#162b5a]">
+              Tell us about your load, route, and schedule. <br />
+              We&apos;ll suggest the right truck and send you a quick quote.
             </p>
 
             <div className="mt-4 w-[85%]">
               <Image
-                src="/WEBP_CTA Otter_Z1k2TcV.webp"
-                alt="Contact Illustration"
+                src="/contact-us.jpg"
+                alt="Contact"
                 width={500}
                 height={400}
                 className="w-full h-auto rounded-xl "
@@ -139,16 +169,21 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* RIGHT SIDE — PRO GLASS FORM */}
-          <div className="
-            bg-white/15 
-            backdrop-blur-2xl 
-            rounded-3xl 
-            p-10 
-            border border-white/30 
+          {/* RIGHT SIDE — GLASS FORM */}
+          <div
+            className="
+            bg-white/15
+            backdrop-blur-2xl
+            rounded-3xl
+            p-10
+            border border-white/30
             shadow-[0_8px_40px_rgba(0,0,0,0.08)]
-          ">
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          "
+          >
+            <form
+              onSubmit={handleSubmit}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
               {/* Success message */}
               {success && (
                 <div className="md:col-span-2 bg-green-100 text-green-800 px-4 py-3 rounded-lg">
@@ -173,7 +208,9 @@ export default function ContactPage() {
                   placeholder="Name"
                   className="w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 text-blue-900 placeholder-blue-300 backdrop-blur-xl transition-all duration-300 focus:bg-white/30 focus:border-blue-400 focus:ring-2 focus:ring-blue-300 outline-none shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
                 />
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">👤</span>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">
+                  👤
+                </span>
               </div>
 
               {/* PHONE */}
@@ -186,20 +223,31 @@ export default function ContactPage() {
                   placeholder="Phone"
                   className="w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 text-blue-900 placeholder-blue-300 backdrop-blur-xl transition-all duration-300 focus:bg-white/30 focus:border-blue-400 focus:ring-2 focus:ring-blue-300 outline-none shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
                 />
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">📞</span>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">
+                  📞
+                </span>
               </div>
 
-              {/* COMPANY */}
+              {/* WHATSAAP */}
               <div className="relative">
                 <input
-                  name="company"
-                  value={formData.company}
+                  name="whatsapp"
+                  value={formData.whatsapp}
                   onChange={handleChange}
                   type="text"
-                  placeholder="Company"
+                  placeholder="whatsapp"
                   className="w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 text-blue-900 placeholder-blue-300 backdrop-blur-xl transition-all duration-300 focus:bg-white/30 focus:border-blue-400 focus:ring-2 focus:ring-blue-300 outline-none shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
                 />
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">🏢</span>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500 text-xl">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    className="w-5 h-5"
+                  >
+                    <path d="M20.52 3.48A11.8 11.8 0 0 0 12.04 0C5.4 0 .04 5.34.04 11.93c0 2.1.55 4.17 1.6 6l-1.7 6.07 6.24-1.63a12.08 12.08 0 0 0 5.86 1.5h.01c6.64 0 12.03-5.34 12.03-11.93a11.84 11.84 0 0 0-3.56-8.46zM12.04 21.4h-.01a10.3 10.3 0 0 1-5.23-1.43l-.38-.23-3.7.97.99-3.54-.25-.36a10.18 10.18 0 0 1-1.57-5.26c0-5.69 4.66-10.32 10.37-10.32a10.3 10.3 0 0 1 7.27 3.01 10.17 10.17 0 0 1 3.05 7.3c0 5.69-4.66 10.32-10.34 10.32zm5.65-7.74c-.31-.16-1.83-.9-2.12-1-.28-.1-.48-.16-.68.16-.2.31-.77 1-.95 1.21-.17.21-.35.23-.66.08-.31-.16-1.29-.48-2.45-1.54-.9-.8-1.5-1.79-1.68-2.1-.17-.31-.02-.48.13-.64.13-.13.31-.35.46-.52.15-.18.2-.3.31-.5.1-.21.05-.39-.03-.54-.08-.16-.68-1.64-.93-2.25-.24-.57-.49-.49-.68-.5h-.58c-.2 0-.52.08-.79.39s-1.04 1-1.04 2.41 1.07 2.8 1.22 2.99c.15.21 2.1 3.2 5.1 4.48.71.31 1.26.49 1.69.63.71.23 1.35.2 1.86.12.57-.08 1.83-.74 2.09-1.46.26-.72.26-1.34.18-1.46-.08-.13-.28-.21-.58-.37z" />
+                  </svg>
+                </span>
               </div>
 
               {/* EMAIL */}
@@ -212,56 +260,124 @@ export default function ContactPage() {
                   placeholder="Email"
                   className="w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 text-blue-900 placeholder-blue-300 backdrop-blur-xl transition-all duration-300 focus:bg-white/30 focus:border-blue-400 focus:ring-2 focus:ring-blue-300 outline-none shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
                 />
-                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">✉️</span>
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-xl">
+                  ✉️
+                </span>
               </div>
 
-              {/* OPTIONS LIST */}
+              {/* LOAD TYPE DROPDOWN */}
               <div className="md:col-span-2 relative">
                 <div
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="
-                    w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 
-                    text-blue-300 backdrop-blur-xl cursor-pointer
-                    transition-all duration-300 select-none relative shadow-[0_4px_20px_rgba(0,0,0,0.04)]
-                  "
+                  onClick={() => setLoadDropdown(!loadDropdown)}
+                  className={`w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 
+                    backdrop-blur-xl cursor-pointer transition-all duration-300 select-none 
+                    relative shadow-[0_4px_20px_rgba(0,0,0,0.04)]
+                    ${formData.loadType ? "text-blue-900" : "text-blue-300"}
+                  `}
                 >
-                  {formData.service || "Choose Service"}
+                  {formData.loadType || "Choose Load Type"}
 
-                  {/* Arrow controlled by dropdownOpen */}
-                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-300 text-lg">
-                    {dropdownOpen ? "▲" : "▼"}
+                  <span
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 text-lg
+                      ${formData.loadType ? "text-blue-900" : "text-blue-300"}
+                  `}
+                  >
+                    {loadDropdown ? "▲" : "▼"}
                   </span>
                 </div>
 
-                {/* OPTIONS LIST */}
-                {dropdownOpen && (
-                  <div
-                    className="
-                      absolute w-full mt-2 bg-white rounded-xl shadow-lg z-50 
-                      border border-gray-200 overflow-hidden
-                    "
-                  >
-                    {["Landing Pages", "Ecommerce", "Web Apps", "UI/UX Design", "Maintenance + Hosting"].map(
-                      (item) => (
-                        <div
-                          key={item}
-                          onClick={() => {
-                            handleOptionClick(item); // value set
-                            setDropdownOpen(false);  // dropdown closes
-                          }}
-                          className="
-                            px-4 py-3 text-blue-400 cursor-pointer
-                            hover:bg-blue-50 transition
-                          "
-                        >
-                          {item}
-                        </div>
-                      )
-                    )}
+                {loadDropdown && (
+                  <div className="absolute w-full mt-2 bg-white rounded-xl shadow-lg z-50 border border-gray-200 overflow-hidden">
+                    {[
+                      "Part Load",
+                      "Full Load",
+                      "Part + Full Load",
+                      "Container",
+                    ].map((item) => (
+                      <div
+                        key={item}
+                        onClick={() => {
+                          setFormData({ ...formData, loadType: item });
+                          setLoadDropdown(false);
+                        }}
+                        className="px-4 py-3 text-blue-400 cursor-pointer hover:bg-blue-50 transition"
+                      >
+                        {item}
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
 
+              {/* BODY TYPE DROPDOWN */}
+              <div className="md:col-span-2 relative">
+                <div
+                  onClick={() => setBodyDropdown(!bodyDropdown)}
+                  className={`w-full p-4 pr-12 rounded-xl bg-white/20 border border-white/40 
+                    backdrop-blur-xl cursor-pointer transition-all duration-300 select-none 
+                    relative shadow-[0_4px_20px_rgba(0,0,0,0.04)]
+                    ${formData.bodyType ? "text-blue-900" : "text-blue-300"}
+                  `}
+                >
+                  {formData.bodyType || "Choose Body Type"}
+
+                  <span
+                    className={`absolute right-4 top-1/2 -translate-y-1/2 text-lg
+                      ${formData.bodyType ? "text-blue-900" : "text-blue-300"}
+                    `}
+                  >
+                    {bodyDropdown ? "▲" : "▼"}
+                  </span>
+                </div>
+
+                {bodyDropdown && (
+                  <div className="absolute w-full mt-2 bg-white rounded-xl shadow-lg z-50 border border-gray-200 overflow-hidden">
+                    {["Open Body", "Closed Body"].map((item) => (
+                      <div
+                        key={item}
+                        onClick={() => {
+                          setFormData({ ...formData, bodyType: item });
+                          setBodyDropdown(false);
+                        }}
+                        className="px-4 py-3 text-blue-400 cursor-pointer hover:bg-blue-50 transition"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* FROM – TO – LOAD WEIGHT */}
+              <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <input
+                  type="text"
+                  name="fromLocation"
+                  value={formData.fromLocation}
+                  onChange={handleChange}
+                  placeholder="From (City)"
+                  className={glassInput}
+                />
+
+                <input
+                  type="text"
+                  name="toLocation"
+                  value={formData.toLocation}
+                  onChange={handleChange}
+                  placeholder="To (City)"
+                  className={glassInput}
+                />
+
+                <input
+                  type="number"
+                  name="loadWeight"
+                  value={formData.loadWeight}
+                  onChange={handleChange}
+                  min="1"
+                  placeholder="Weight (KG)"
+                  className={glassInput}
+                />
+              </div>
 
               {/* MESSAGE */}
               <div className="md:col-span-2">
@@ -288,15 +404,8 @@ export default function ContactPage() {
                   disabled={loading}
                   className="arrow-loop inline-block bg-blue-700 hover:bg-blue-500 text-white py-2 px-10 rounded-full font-semibold transition duration-300 disabled:opacity-60"
                 >
-                  {loading ? "Sending..." : "Let’s talk business"}
+                  {loading ? "Sending..." : "Get a Quote"}
                 </button>
-
-                <a
-                  href="#"
-                  className="text-blue-600 text-sm text-center md:text-right underline hover:text-blue-700 block"
-                >
-                  <h6>Wanna Chat Instead? Book a Consultation.</h6>
-                </a>
               </div>
             </form>
           </div>
@@ -304,179 +413,120 @@ export default function ContactPage() {
       </section>
 
       {/* ⭐ Footer */}
-      <footer className="relative z-20 bg-white">
-        <div className="w-full px-4 md:px-10 lg:px-16 text-blue-secondary">
-          <div className="mx-auto max-w-[1200px] flex flex-col lg:flex-row lg:justify-between lg:gap-12 pt-8 lg:pt-12 pb-6 lg:pb-10">
+      <footer className="bg-white border-t border-blue-100">
+        <div className="max-w-[1200px] mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-blue-900">
+          {/* BRAND */}
+          <div className="flex flex-col gap-4">
+            <Image
+              src="/Sk_transport_logo.png"
+              alt="SK Transport Service"
+              width={300}
+              height={100}
+            />
 
-            {/* LEFT COLUMN */}
-            <div className="flex-1 flex flex-col gap-6 lg:gap-8">
-              <Link href="/" className="w-max">
-                <Image
-                  src="/krayons.png"
-                  alt="Otterdev"
-                  width={200}
-                  height={80}
-                  className="w-[150px] lg:w-[200px] h-auto"
-                />
-              </Link>
+            <p className="text-sm text-blue-600 leading-relaxed">
+              Reliable & fast transport solutions for businesses across India.
+              We move your goods safely and on time.
+            </p>
 
-              <nav className="flex flex-col sm:flex-row gap-3 sm:gap-8 lg:gap-12 font-bold text-blue-600">
-                {[
-                  { name: "Landing Pages", href: "/websites" },
-                  { name: "Ecommerce", href: "/ecommerce" },
-                  { name: "Web Apps", href: "/web-apps" },
-                  { name: "UX/UI Design", href: "/ui-ux-design" },
-                ].map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="relative py-2 w-max transition-transform duration-300 hover:-translate-y-1
-                               before:absolute before:-bottom-1.5 before:left-0
-                               before:w-full before:h-0.5 before:bg-blue-600
-                               before:opacity-0 hover:before:opacity-100 before:transition-all before:duration-300"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-
-              <div className="flex gap-4 mt-4 lg:mt-6">
-                {[
-                  { src: "/linkedin_Z6bcyD.webp", alt: "LinkedIn", link: "https://www.linkedin.com/company/krayons-group/" },
-                  { src: "/instagram_1VYmuM.webp", alt: "Instagram", link: "https://www.instagram.com/adkrayons/" },
-                  { src: "/whatsapp_Z1JDlpT.webp", alt: "WhatsApp", link: "https://wa.me/9212108750" },
-                ].map((icon, index) => (
-                  <Link
-                    key={index}
-                    href={icon.link}
-                    target="_blank"
-                    className="w-10 h-10 rounded-full hover:bg-blue-200 flex items-center justify-center duration-300"
-                  >
-                    <Image src={icon.src} alt={icon.alt} width={22} height={22} />
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN */}
-            <div className="mt-8 lg:mt-0 lg:w-[365px] flex flex-col gap-4">
-
-              <p className="font-PM font-bold text-blue-800 text-lg">
-                Like what you see?
-              </p>
-
-              <p className="font-P1 text-blue-600 text-sm md:text-base">
-                Got questions, ideas, or just want to say hi?
-              </p>
-
-              {/* BUTTON 1 */}
-              <Link
-                href="https://timesync.novocall.co/otter-ships/otterdev-discuss"
-                target="_blank"
-                className="w-full bg-blue-500 text-white font-semibold rounded-lg py-3
-                          flex items-center justify-center gap-2
-                          hover:bg-white hover:text-blue-600 border border-blue-500
-                          transition duration-300"
-              >
-                <svg
-                  width="14"
-                  height="16"
-                  viewBox="0 0 14 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3 1C3 0.46875 3.4375 0 4 0C4.53125 0 5 0.46875 5 1V2H9V1C9 0.46875 9.4375 0 10 0C10.5312 0 11 0.46875 11 1V2H12.5C13.3125 2 14 2.6875 14 3.5V5H0V3.5C0 2.6875 0.65625 2 1.5 2H3V1ZM14 14.5C14 15.3438 13.3125 16 12.5 16H1.5C0.65625 16 0 15.3438 0 14.5V6H14V14.5Z"
-                    fill="currentColor"
-                  />
-                </svg>
-                Book a Meeting
-              </Link>
-
-              {/* BUTTON 2 */}
-              <Link
-                href="https://wa.me/9212108750"
-                target="_blank"
-                className="
-                  w-full bg-white text-blue-600 font-semibold rounded-lg py-3 
-                  flex items-center justify-center gap-2
-                  border border-blue-500 hover:bg-blue-50
-                  transition duration-300
-                "
-              >
-                <Image src="/phone_ZU1vXz.webp" width={18} height={18} alt="phone" />
-                Whatsapp Us
-              </Link>
-
-              {/* CONTACT ROW */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 mt-2">
-                {/* PHONE */}
-                <Link
-                  href="tel:+9191114553510"
-                  className="flex items-center gap-2 text-blue-800 hover:text-blue-900 transition duration-300"
-                >
-                  <Image
-                    src="/phone_ZU1vXz.webp"
-                    alt="Phone"
-                    width={18}
-                    height={18}
-                    className="w-[18px] h-[18px] object-contain"
-                  />
-
-                  {/* ONLY text gets background on hover */}
-                  <span
-                    className="
-                      font-medium whitespace-nowrap 
-                      px-2 py-1 rounded-lg
-                      transition duration-300
-                      hover:bg-blue-200
-                    "
-                  >
-                    +91 91114553510
-                  </span>
-                </Link>
-
-                {/* EMAIL */}
-                <Link
-                  href="mailto:krayonsad@gmail.com"
-                  className="flex items-center gap-2 text-blue-800 hover:text-blue-900 transition duration-300 mt-2 sm:mt-0"
-                >
-                  <Image
-                    src="/mail_2lJ0OB.webp"
-                    alt="Mail"
-                    width={18}
-                    height={18}
-                    className="w-[18px] h-[18px] object-contain"
-                  />
-
-                  {/* ONLY text gets background on hover */}
-                  <span
-                    className="
-                      font-medium whitespace-nowrap
-                      px-2 py-1 rounded-lg
-                      transition duration-300
-                      hover:bg-blue-200
-                    "
-                  >
-                    krayonsad@gmail.com
-                  </span>
-                </Link>
-
-              </div>
-
-            </div>
-
-          </div>
-
-          <div className="bg-white py-2 mt-6">
-            <div className="mx-auto max-w-[1200px] flex flex-col sm:flex-row items-center justify-between text-blue-800 text-[11px] lg:text-[14px] px-4 md:px-10 lg:px-16">
-              <p>© 2025 KRAYONS GROUP. All rights reserved.</p>
+            <div className="text-sm text-blue-700 space-y-1">
+              <p>✔ On-time delivery</p>
+              <p>✔ Open & Closed body trucks</p>
+              <p>✔ Pan-India transport</p>
             </div>
           </div>
 
+          {/* SERVICES */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Our Services</h4>
+            <ul className="space-y-2 text-sm text-blue-700">
+              <li>Part Load Transport</li>
+              <li>Full Load Transport</li>
+              <li>Open Body Trucks</li>
+              <li>Closed Body Trucks</li>
+              <li>Container Transport</li>
+            </ul>
+          </div>
+
+          {/* ROUTES */}
+          <div>
+            <h4 className="font-semibold text-lg mb-4">Popular Routes</h4>
+            <ul className="space-y-2 text-sm text-blue-700">
+              <li>Delhi → Mumbai</li>
+              <li>Delhi → Patna</li>
+              <li>Delhi → Kolkata</li>
+              <li>NCR → Bihar / UP</li>
+              <li>All India Transport</li>
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div className="flex flex-col gap-4">
+            <h4 className="font-semibold text-lg">Quick Contact</h4>
+
+            {/* MOBILE NUMBERS */}
+            <div className="space-y-2 text-sm">
+              <a href="tel:+919871820312" className="block hover:text-blue-600">
+                📞 +91 98718 20312
+              </a>
+              <a href="tel:+917503520314" className="block hover:text-blue-600">
+                📞 +91 75035 20314
+              </a>
+              <a href="tel:+919319220315" className="block hover:text-blue-600">
+                📞 +91 93192 20315
+              </a>
+            </div>
+
+            {/* WHATSAPP */}
+            <a
+              href="https://wa.me/919319220315"
+              target="_blank"
+              className="mt-2 inline-flex items-center justify-center gap-2
+               bg-green-500 hover:bg-green-600 text-white
+               rounded-lg py-3 font-semibold transition"
+            >
+              💬 WhatsApp Us
+            </a>
+
+            {/* EMAIL – CLICKABLE */}
+            <a
+              href="mailto:sktransportservices75@gmail.com"
+              className="text-sm text-blue-700 hover:text-blue-900"
+            >
+              ✉ sktransportservices75@gmail.com
+            </a>
+          </div>
+        </div>
+
+        {/* ADDRESS + TRUST LINE */}
+        <div className="border-t border-blue-100 py-6">
+          <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-blue-700">
+            {/* OFFICE ADDRESS */}
+            <div>
+              <p className="font-semibold text-blue-900 mb-1">Office Address</p>
+              <p>
+                101, DSIDC Shed Schekm 1,
+                <br />
+                Near National Dharam Kanta,
+                <br />
+                Okhla Phase 2, New Delhi - 110020
+              </p>
+            </div>
+
+            {/* TRUST STATEMENT */}
+            <div className="md:text-right font-semibold text-blue-800">
+              Fleet Owners & Transport Contractors —
+              <br />
+              Daily Services Across All Over India
+            </div>
+          </div>
+        </div>
+
+        {/* BOTTOM */}
+        <div className="border-t border-blue-100 py-4 text-center text-sm text-blue-600">
+          © 2025 SK Transport Services. All rights reserved.
         </div>
       </footer>
-
     </main>
   );
 }

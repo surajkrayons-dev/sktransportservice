@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-export default function EcommercePage() {
+export default function OpenClosedBody() {
   return (
     <main className="relative bg-white">
       {/* ⭐ HERO SECTION */}
@@ -127,7 +127,6 @@ export default function EcommercePage() {
 
               {/* 4 Cards Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
                 {/* CARD 1 */}
                 <div className="p-6 bg-white border border-[#d6e6ff] rounded-2xl shadow-[0_10px_40px_rgba(135,175,255,0.35)]">
                   <div className="w-12 h-12 rounded-xl bg-[#e8f3ff] flex items-center justify-center mb-4">
@@ -140,11 +139,13 @@ export default function EcommercePage() {
                     />
                   </div>
 
-                  <h4 className="text-xl font-semibold text-blue-900">User-Focused Design</h4>
+                  <h4 className="text-xl font-semibold text-blue-900">
+                    User-Focused Design
+                  </h4>
 
                   <p className="text-blue-700 mt-2">
-                    We’ll design intuitive and engaging shopping experiences that guide
-                    customers seamlessly through your store.
+                    We’ll design intuitive and engaging shopping experiences
+                    that guide customers seamlessly through your store.
                   </p>
                 </div>
 
@@ -165,8 +166,8 @@ export default function EcommercePage() {
                   </h4>
 
                   <p className="text-blue-700 mt-2">
-                    We focus on creating high-performance product pages, checkout flows,
-                    and navigation that drive sales.
+                    We focus on creating high-performance product pages,
+                    checkout flows, and navigation that drive sales.
                   </p>
                 </div>
 
@@ -187,8 +188,8 @@ export default function EcommercePage() {
                   </h4>
 
                   <p className="text-blue-700 mt-2">
-                    We ensure your ecommerce site delivers a flawless experience on all
-                    devices, especially mobile.
+                    We ensure your ecommerce site delivers a flawless experience
+                    on all devices, especially mobile.
                   </p>
                 </div>
 
@@ -204,15 +205,16 @@ export default function EcommercePage() {
                     />
                   </div>
 
-                  <h4 className="text-xl font-semibold text-blue-900">SEO & Performance</h4>
+                  <h4 className="text-xl font-semibold text-blue-900">
+                    SEO & Performance
+                  </h4>
 
                   <p className="text-blue-700 mt-2">
-                    We build SEO-friendly ecommerce platforms that load quickly and rank
-                    well in search results, attracting and retaining customers.
+                    We build SEO-friendly ecommerce platforms that load quickly
+                    and rank well in search results, attracting and retaining
+                    customers.
                   </p>
                 </div>
-
-
               </div>
             </div>
           </div>
@@ -232,7 +234,6 @@ export default function EcommercePage() {
 
               {/* 4 CARDS */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
                 {/* CARD 1 */}
                 <div className="p-6 bg-white border border-[#d6e6ff] rounded-2xl shadow-[0_10px_40px_rgba(135,175,255,0.35)]">
                   <div className="w-12 h-12 rounded-xl bg-[#f1eaff] flex items-center justify-center mb-4">
@@ -250,8 +251,8 @@ export default function EcommercePage() {
                   </h4>
 
                   <p className="text-blue-700 mt-2">
-                    Regular updates for your ecommerce platform and plugins to ensure
-                    compatibility and security.
+                    Regular updates for your ecommerce platform and plugins to
+                    ensure compatibility and security.
                   </p>
                 </div>
 
@@ -272,8 +273,8 @@ export default function EcommercePage() {
                   </h4>
 
                   <p className="text-blue-700 mt-2">
-                    Continuous monitoring to ensure fast loading times and smooth user
-                    experience.
+                    Continuous monitoring to ensure fast loading times and
+                    smooth user experience.
                   </p>
                 </div>
 
@@ -294,8 +295,8 @@ export default function EcommercePage() {
                   </h4>
 
                   <p className="text-blue-700 mt-2">
-                    Dedicated support for troubleshooting issues and providing technical
-                    help when needed.
+                    Dedicated support for troubleshooting issues and providing
+                    technical help when needed.
                   </p>
                 </div>
 
@@ -320,7 +321,6 @@ export default function EcommercePage() {
                     compatibility with your platform.
                   </p>
                 </div>
-
               </div>
             </div>
           </div>

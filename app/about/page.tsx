@@ -1,77 +1,46 @@
 "use client";
 
-import { useState } from "react";
+// import { useState } from "react";
 import Image from "next/image";
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState("enterprise");
-
-  /* ------------------------------------
-     LOGO LISTS (Replace logo paths here)
-  ------------------------------------ */
-
-  const enterpriseLogos = [
-    "/redAntler-Logo.webp",
-    "/figma.webp",
-    "/HP-Logo-Black.webp",
-    "/mediatek.webp",
-    "/Tsmc 1.webp",
-    "/Singapore-Art Museum Logo-Full-Color.webp",
-    "/Ktm-1.svg",
-    "/AWWA-blavk-Colour-Logo.webp",
-    "/ciberspring-logo-big 1.webp",
-    "/RSH-Logo-Full-Color.webp",
-  ];
-
-  const startupLogos = [
-    "/MMC-Logo-Full-Color.svg",
-    "/Hoffman Agency Logo.webp",
-    "/evident-logo_black_blue.webp",
-    "/mediatek.webp",
-    "/Tsmc 1.webp",
-    "/Singapore-Art Museum Logo-Full-Color.webp",
-    "/Ktm-1.svg",
-    "/AWWA-blavk-Colour-Logo.webp",
-    "/ciberspring-logo-big 1.webp",
-    "/RSH-Logo-Full-Color.webp",
-    "/MMC-Logo-Full-Color.svg",
-    "/Hoffman Agency Logo.webp",
-    "/evident-logo_black_blue.webp",
-  ];
-
   return (
     <main className="relative bg-white">
-
       {/* ⭐ HERO SECTION */}
-      <section className="fixed inset-0 w-full h-screen bg-white flex flex-col items-center justify-start pt-40 z-1">
-        <div className="text-center px-4 max-w-4xl mx-auto z-20">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight secretWeapon">
-            Staying small, thinking{" "}
-            <span className="bg-pink-200 px-2 rounded-lg text-white">big.</span>
-          </h1>
-
-          <p className="text-lg md:text-xl mt-4 text-blue-500 font-semibold">
-            <span  className="foundText">
-              We stay lean to move fast,<br />
-            </span>
-            <span className="greyGradient">
-              stay hands-on,<br />
-            </span>
-            <span className="secretWeapon">
-              and build platforms that deliver real value.
-            </span>
-          </p>
+      <section className="fixed inset-0 w-full h-screen overflow-hidden flex items-center justify-center z-0">
+        {/* IMAGE WRAPPER */}
+        <div className="absolute inset-0 flex items-center justify-center translate-y-16 md:translate-y-15">
+          <Image
+            src="/about_us.jpg"
+            alt="About"
+            fill
+            priority
+            className="object-contain"
+          />
         </div>
 
-        <div className="relative w-full flex justify-center mt-5 z-10">
-          <Image
-            src="/About Us Hero.webp"
-            alt="About illustration"
-            width={2000}
-            height={1200}
-            priority
-            className="w-[85%] max-w-5xl h-auto pointer-events-none"
-          />
+        {/* TEXT CONTENT */}
+        <div className="absolute z-20 text-center px-6 max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 leading-tight secretWeapon">
+            Reliable transport for{" "}
+            <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-[#ffddbe] to-[#a35b1d] inline-block">
+              every load
+            </span>
+          </h1>
+
+          <p className="text-2xl md:text-4xl mt-4 text-blue-500 font-semibold">
+            <span className="foundText">
+              From part load to full load transportation,
+              <br />
+            </span>
+            <span className="greyGradient">
+              we move your goods safely and on time,
+              <br />
+            </span>
+            <span className="secretWeapon">
+              across cities and states in India.
+            </span>
+          </p>
         </div>
       </section>
 
@@ -113,31 +82,38 @@ export default function AboutPage() {
       {/* ⭐ INTRO SECTION */}
       <section className="bg-white relative z-30">
         <div className="max-w-6xl mx-auto px-4 py-0 flex flex-col items-center text-center">
-
           <h1 className="text-4xl md:text-5xl font-extrabold text-blue-900 leading-relaxed mb-6 secretWeapon">
-            We merge business{" "}
-            <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-blue-200 to-blue-600 inline-block">
-              vision,
+            A reliable{" "}
+            <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-blue-300 to-blue-600 inline-block">
+              transport & logistics
             </span>{" "}
-            tech precision, and user{" "}
-            <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-red-300 to-orange-600 inline-block">
-              understanding
-            </span>{" "}
-            to build{" "}
-            <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-[#ffddbe] to-[#a35b1d] inline-block">
-              impactful digital
-            </span>{" "}
-            platforms.
+            partner you can trust.
           </h1>
 
-          <p className="text-lg md:text-xl text-blue-600 mb-6 max-w-3xl leading-relaxed">
-            Krayons groups with brands in Singapore, New York, and Australia to build scalable websites,
-            ecommerce platforms, and apps powered by headless CMS like Sanity, Strapi, and frameworks such as
-            Next.js and Astro.
+          <p className="text-lg md:text-xl mb-6 max-w-3xl leading-relaxed text-[#162b5a]">
+            Welcome to <strong>SK Transport Service</strong>, a trusted name in
+            road transportation and logistics across India. Founded by
+            <strong> Mr. Satender Kumar</strong>, we have been actively serving
+            businesses and individuals since <strong>1990</strong>.
+            <br />
+            <br />
+            With over three decades of hands-on experience in the transport
+            industry, we specialize in safe, reliable, and on-time delivery of
+            goods through part-load and full-load transport solutions. Our
+            commitment is simple — move your goods efficiently, securely, and
+            without delay.
+          </p>
+
+          <p className="text-lg md:text-xl mb-6 max-w-3xl leading-relaxed text-[#162b5a]">
+            From local routes to long-distance interstate transportation, our
+            All India Permit trucks operate across cities and states with
+            complete compliance and professionalism. We work as a logistics
+            partner, not just a transporter, ensuring transparency, reliability,
+            and long-term relationships with our clients.
           </p>
 
           <Image
-            src="/about-us 2.webp"
+            src="/aboutme.jpg"
             alt="Services"
             width={1800}
             height={1000}
@@ -147,110 +123,98 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ⭐ PHILOSOPHY SECTION */}
-      <section className="bg-white py-24 relative z-30">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h5 className="text-4xl md:text-5xl font-extrabold text-blue-500 mb-10">Our Philosophy</h5>
-          <p className="text-4xl md:text-5xl font-extrabold text-blue-900 mb-10 secretWeapon">
-            Our Strategic Approach
-          </p>
-
-          <Image
-            src="/about-us-3.webp"
-            alt="Services"
-            width={1800}
-            height={1000}
-            priority
-            className="rounded-2xl w-full max-w-6xl h-auto"
-          />
-
-          <p className="text-lg md:text-xl text-blue-600 mt-10 max-w-3xl mx-auto leading-relaxed">
-            We believe that all business solutions must fulfill the criteria of our DVF framework, ensuring they are both effective and aligned with our core values.
-          </p>
-        </div>
-      </section>
-
-      {/* ⭐ OTTERDEV STYLE LOGO SLIDER */}
+      {/* ⭐ Why Choose SECTION */}
       <section className="bg-linear-to-t from-[#eef6ff] via-white to-white py-24 relative z-30">
-        <div className="w-full flex justify-center">
-          <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          {/* HEADING */}
+          <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 mb-10 secretWeapon">
+            Why Choose SK Transport Service
+          </h1>
 
-            {/* Title */}
-            <div className="text-center mb-10">
-              <p className="text-blue-500 font-semibold text-2xl md:text-4xl">We Work With Everyone, Big and Small</p>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 secretWeapon">
-                Building brands through brilliant digital.
-              </h2>
+          {/* INTRO LINE */}
+          <p className="text-lg md:text-xl text-[#162b5a] max-w-3xl mx-auto leading-relaxed mb-14">
+            With decades of experience and a strong operational network, we
+            deliver transport solutions that businesses trust for safety,
+            reliability, and timely delivery.
+          </p>
+
+          {/* IMAGE – SMALLER & CENTERED */}
+          <div className="flex justify-center mb-10">
+            <Image
+              src="/why-choose.jpg"
+              alt="Why Choose SK Transport Service"
+              width={600}
+              height={250}
+              className="rounded-xl w-full max-w-2xl h-auto"
+              priority
+            />
+          </div>
+
+          {/* POINTS GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto text-left">
+            <div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                1. Experience Since 1990
+              </h3>
+              <p className="text-[#162b5a] leading-relaxed">
+                With over 30+ years in the transport industry, we understand
+                routes, regulations, and real-world logistics challenges better
+                than anyone else.
+              </p>
             </div>
 
-            {/* Tabs */}
-            <div className="flex justify-center mb-10">
-              <div className="flex bg-blue-50 p-2 rounded-full shadow-sm">
-                <button
-                  className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                    activeTab === "enterprise" ? "bg-white shadow text-blue-700" : "text-blue-400"
-                  }`}
-                  onClick={() => setActiveTab("enterprise")}
-                >
-                  Enterprise
-                </button>
-
-                <button
-                  className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                    activeTab === "startup" ? "bg-white shadow text-blue-700" : "text-blue-400"
-                  }`}
-                  onClick={() => setActiveTab("startup")}
-                >
-                  Startup / SMEs
-                </button>
-              </div>
+            <div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                2. Safe & On-Time Delivery
+              </h3>
+              <p className="text-[#162b5a] leading-relaxed">
+                Your goods are handled with care and delivered on schedule,
+                ensuring peace of mind for every shipment.
+              </p>
             </div>
 
-            {/* Slider */}
-            <div className="relative overflow-hidden w-full">
-              <div
-                className="flex transition-transform duration-700 ease-out"
-                style={{
-                  transform:
-                    activeTab === "enterprise" ? "translateX(0%)" : "translateX(-100%)",
-                }}
-              >
-                {/* Enterprise logo grid */}
-                <div className="min-w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-2 place-items-center">
-                  {enterpriseLogos.map((logo, index) => (
-                    <LogoCard key={index} logo={logo} />
-                  ))}
-                </div>
-
-                {/* Startup logo grid */}
-                <div className="min-w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 px-2 place-items-center">
-                  {startupLogos.map((logo, index) => (
-                    <LogoCard key={index} logo={logo} />
-                  ))}
-                </div>
-              </div>
+            <div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                3. Part Load & Full Load Options
+              </h3>
+              <p className="text-[#162b5a] leading-relaxed">
+                We offer flexible transport solutions — whether you need
+                part-load sharing or dedicated full-load trucks.
+              </p>
             </div>
 
+            <div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                4. All India Permit Trucks
+              </h3>
+              <p className="text-[#162b5a] leading-relaxed">
+                Our fleet operates across states with valid permits, allowing
+                seamless interstate transportation without delays.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                5. Transparent Communication
+              </h3>
+              <p className="text-[#162b5a] leading-relaxed">
+                We keep our clients informed at every stage — from pickup to
+                final delivery — with clear and honest communication.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-blue-900 mb-2">
+                6. Long-Term Business Partnerships
+              </h3>
+              <p className="text-[#162b5a] leading-relaxed">
+                We don’t just transport goods — we build long-term relationships
+                based on trust, reliability, and consistent service quality.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
   );
 }
-
-/* ⭐ LOGO CARD COMPONENT */
-function LogoCard({ logo }: { logo: string }) {
-  return (
-    <div className="border border-blue-100 bg-white rounded-2xl p-6 flex items-center justify-center hover:shadow-lg transition-all h-[120px]">
-      <Image
-        src={logo}
-        width={140}
-        height={80}
-        className="object-contain"
-        alt="brand logo"
-      />
-    </div>
-  );
-}
-

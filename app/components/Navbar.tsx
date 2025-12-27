@@ -25,6 +25,12 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  useEffect(() => {
+    const closeDropdown = () => setDesktopServices(false);
+    window.addEventListener("click", closeDropdown);
+    return () => window.removeEventListener("click", closeDropdown);
+  }, []);
+
   return (
     <>
       <div
@@ -38,17 +44,21 @@ export default function Navbar() {
             className="w-full max-w-[1200px] bg-white rounded-[152px] px-10 py-4 flex items-center justify-between"
             style={{
               boxShadow:
-                "0 4px 20px rgba(59, 130, 246, 0.3), 0 2px 8px rgba(59, 130, 246, 0.2)",
+                "0 4px 20px rgba(194, 194, 194, 0.229), 0 2px 8px rgb(255, 255, 255)",
             }}
           >
             {/* LOGO */}
             <Link href="/">
               <Image
-                src="/krayons.png"
+                src="/Sk_transport_logo.png"
                 alt="Logo"
-                width={150}
-                height={50}
-                className="w-[150px] h-auto"
+                width={200}
+                height={80}
+                className="
+                  w-[140px]        sm:w-[160px]
+                  md:w-[180px]     lg:w-[210px]
+                  h-auto
+                "
                 priority
               />
             </Link>
@@ -60,18 +70,9 @@ export default function Navbar() {
                   href="/about"
                   className="
                     inline-block px-5 py-2.5 rounded-full
-                    text-[#FF7A7A]
-
+                    text-[#000000dc]
                     transition-all duration-300 ease-out
                     will-change-transform
-
-                    hover:text-transparent
-                    hover:bg-clip-text
-                    hover:bg-linear-to-r
-                    hover:from-[#FF7A7A]
-                    hover:via-[#C084FC]
-                    hover:to-[#60A5FA]
-
                     hover:font-semibold
                     hover:scale-110
                   "
@@ -82,88 +83,76 @@ export default function Navbar() {
                 {/* SERVICES DROPDOWN */}
                 <div className="relative">
                   <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setDesktopServices(!desktopServices);
+                    }}
                     className="inline-block px-5 py-2.5 rounded-full
-                    text-[#FF7A7A] transition-all duration-300 ease-out will-change-transform
-                    hover:text-transparent hover:bg-clip-text
-                    hover:bg-linear-to-r hover:from-[#FF7A7A] hover:via-[#C084FC] hover:to-[#60A5FA]
-                    hover:font-semibold hover:scale-110"
-                    onClick={() => setDesktopServices(!desktopServices)}
+      text-[#000000dc] transition-all duration-300 ease-out
+      hover:font-semibold hover:scale-110"
                   >
-                    Services <span className="text-sm">{desktopServices ? "▲" : "▼"}</span>
+                    Services{" "}
+                    <span className="text-sm">
+                      {desktopServices ? "▲" : "▼"}
+                    </span>
                   </button>
 
                   {desktopServices && (
-                    <div className="absolute left-0 top-[120%] w-60 bg-white rounded-2xl shadow-lg p-4 space-y-4 z-50">
-
+                    <div
+                      className="absolute left-0 top-[120%] w-72 bg-white rounded-2xl
+                 shadow-lg p-5 space-y-4 z-50"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <Link
-                        href="/services/ecommerce"
+                        href="/services/part-full-load"
                         onClick={() => setDesktopServices(false)}
-                        className="flex items-center gap-3 hover:opacity-70"
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg
+                   hover:bg-blue-50 transition"
                       >
-                        <span className="text-blue-500 text-xl">🛒</span>
-                        <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ff8153] to-[#4a03fcbe]">
-                          Ecommerce
+                        <span className="text-xl">📦🚚</span>
+                        <span className="text-slate-900 font-medium">
+                          Part / Full Load Transport
                         </span>
                       </Link>
 
                       <Link
-                        href="/services/websites"
+                        href="/services/open-closed-body"
                         onClick={() => setDesktopServices(false)}
-                        className="flex items-center gap-3 hover:opacity-70"
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg
+                   hover:bg-blue-50 transition"
                       >
-                        <span className="text-red-500 text-xl">🏢</span>
-                        <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ff8153] to-[#4a03fcbe]">
-                          Websites
+                        <span className="text-xl">🛻🚛</span>
+                        <span className="text-slate-900 font-medium">
+                          Open / Closed Body Trucks
                         </span>
                       </Link>
 
                       <Link
-                        href="/services/web-apps"
+                        href="/services/container-transport"
                         onClick={() => setDesktopServices(false)}
-                        className="flex items-center gap-3 hover:opacity-70"
+                        className="flex items-center gap-3 px-3 py-2 rounded-lg
+                   hover:bg-blue-50 transition"
                       >
-                        <span className="text-pink-500 text-xl">📱</span>
-                        <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ff8153] to-[#4a03fcbe]">
-                          Web Apps
+                        <span className="text-xl">📦🚢</span>
+                        <span className="text-slate-900 font-medium">
+                          Container Transport
                         </span>
                       </Link>
-
-                      <Link
-                        href="/services/ui-ux"
-                        onClick={() => setDesktopServices(false)}
-                        className="flex items-center gap-3 hover:opacity-70"
-                      >
-                        <span className="text-yellow-500 text-xl">✏️</span>
-                        <span className="bg-clip-text text-transparent bg-linear-to-r from-[#ff8153] to-[#4a03fcbe]">
-                          UI/UX Design
-                        </span>
-                      </Link>
-
                     </div>
                   )}
                 </div>
 
-
-                <Link
+                {/* <Link
                   className="inline-block px-5 py-2.5 rounded-full
-                    text-[#FF7A7A]
-
+                    text-[#000000dc]
                     transition-all duration-300 ease-out
                     will-change-transform
-
-                    hover:text-transparent
-                    hover:bg-clip-text
-                    hover:bg-linear-to-r
-                    hover:from-[#FF7A7A]
-                    hover:via-[#C084FC]
-                    hover:to-[#60A5FA]
-
                     hover:font-semibold
                     hover:scale-110"
                   href="/posts"
                 >
                   Insights
-                </Link>
+                </Link> */}
               </nav>
 
               {/* CONTACT BUTTON */}
@@ -183,16 +172,20 @@ export default function Navbar() {
             className="w-full max-w-[95%] bg-white rounded-[152px] px-6 py-4 flex justify-between items-center"
             style={{
               boxShadow:
-                "0 4px 20px rgba(59, 130, 246, 0.3), 0 2px 8px rgba(59, 130, 246, 0.2)",
+                "0 4px 20px rgba(194, 194, 194, 0.229), 0 2px 8px rgb(255, 255, 255)",
             }}
           >
             <Link href="/">
               <Image
-                src="/krayons.png"
+                src="/Sk_transport_logo.png"
                 alt="Logo"
-                width={120}
-                height={40}
-                className="w-[120px] h-auto"
+                width={200}
+                height={80}
+                className="
+                  w-[140px]        sm:w-[160px]
+                  md:w-[180px]     lg:w-[210px]
+                  h-auto
+                "
                 priority
               />
             </Link>
@@ -204,11 +197,11 @@ export default function Navbar() {
               }}
             >
               <Image
-                src="/hamburger.svg"
+                src="/menu_bar.png"
                 alt="menu"
-                width={28}
+                width={50}
                 height={28}
-                className="w-7 h-7"
+                className="w-20 h-10"
               />
             </button>
           </div>
@@ -225,7 +218,7 @@ export default function Navbar() {
               }}
             >
               <Link href="/about" onClick={() => setOpen(false)}>
-                <div className="py-3 bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#1949ab]">
+                <div className="py-3 bg-clip-text text-transparent bg-linear-to-r from-[#393939] to-[#393939]">
                   About Us
                 </div>
               </Link>
@@ -235,65 +228,63 @@ export default function Navbar() {
                 className="w-full flex justify-between items-center py-3"
                 onClick={() => setServicesOpen(!servicesOpen)}
               >
-                <span className="bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#e66c6c]">
+                <span className="bg-clip-text text-transparent bg-linear-to-r from-[#393939] to-[#393939]">
                   Services
                 </span>
                 <span>{servicesOpen ? "▲" : "▼"}</span>
               </button>
 
               {servicesOpen && (
-                <div className="ml-4 mt-2 space-y-3 pb-3">
+                <div className="ml-4 mt-3 space-y-4 pb-3">
                   <Link
-                    href="/services/ecommerce"
-                    onClick={() => setOpen(false)}
+                    href="/services/part-full-load"
+                    onClick={() => {
+                      setOpen(false);
+                      setServicesOpen(false);
+                    }}
                     className="flex items-center gap-3"
                   >
-                    <span className="text-blue-500 text-xl">🛒</span>
-                    <span className="bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#e66c6c]">
-                      Ecommerce
+                    <span className="text-xl">📦🚚</span>
+                    <span className="text-slate-900 font-medium">
+                      Part / Full Load Transport
                     </span>
                   </Link>
 
                   <Link
-                    href="/services/websites"
-                    onClick={() => setOpen(false)}
+                    href="/services/open-closed-body"
+                    onClick={() => {
+                      setOpen(false);
+                      setServicesOpen(false);
+                    }}
                     className="flex items-center gap-3"
                   >
-                    <span className="text-red-500 text-xl">🏢</span>
-                    <span className="bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#e66c6c]">
-                      Websites
+                    <span className="text-xl">🛻🚛</span>
+                    <span className="text-slate-900 font-medium">
+                      Open / Closed Body Trucks
                     </span>
                   </Link>
 
                   <Link
-                    href="/services/web-apps"
-                    onClick={() => setOpen(false)}
+                    href="/services/container-transport"
+                    onClick={() => {
+                      setOpen(false);
+                      setServicesOpen(false);
+                    }}
                     className="flex items-center gap-3"
                   >
-                    <span className="text-pink-500 text-xl">📱</span>
-                    <span className="bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#e66c6c]">
-                      Web Apps
-                    </span>
-                  </Link>
-
-                  <Link
-                    href="/services/ui-ux"
-                    onClick={() => setOpen(false)}
-                    className="flex items-center gap-3"
-                  >
-                    <span className="text-yellow-500 text-xl">✏️</span> 
-                    <span className="bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#e66c6c]">
-                      UI/UX Design
+                    <span className="text-xl">📦🚢</span>
+                    <span className="text-slate-900 font-medium">
+                      Container Transport
                     </span>
                   </Link>
                 </div>
               )}
 
-              <Link href="/posts" onClick={() => setOpen(false)}>
-                <div className="py-3 bg-clip-text text-transparent bg-linear-to-r from-[#eb9292] to-[#1949ab]">
+              {/* <Link href="/posts" onClick={() => setOpen(false)}>
+                <div className="py-3 bg-clip-text text-transparent bg-linear-to-r from-[#393939] to-[#393939]">
                   Insights
                 </div>
-              </Link>
+              </Link> */}
 
               <a
                 href="#contact-form"

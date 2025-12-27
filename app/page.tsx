@@ -9,68 +9,97 @@ export default function HomePage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const cards = [
     {
-      image: "/Ecommerce.webp",
-      tag: "Storefronts & Maintenance",
-      title: "Ecommerce solutions that sell.",
-      desc: "High-performance Shopify & BigCommerce builds…",
+      image: "/all_india_permit.jpg",
+      tag: "All India Permit",
+      title: "All India Permit routes covered.",
+      subtitle:
+        "Choose the right transport solution based on your load and safety needs.",
+      desc: "All India Permit trucks for seamless interstate movement. Regular routes, reliable drivers and clear communication from pickup to delivery.",
       buttons: [
-        { label: "Learn More", primary: true,  className: "arrow-loop" }],
+        {
+          label: "Learn More",
+          primary: true,
+          className: "arrow-loop",
+          href: "/services/all-india-permit",
+        },
+      ],
     },
     {
-      image: "/home-website.jpg",
-      tag: "Websites",
-      title: "Websites that stand out.",
-      desc: "We build fast, scalable websites…",
-      buttons: [{ label: "Explore", primary: true, className: "arrow-loop" }],
+      image: "/part-load.jpg",
+      tag: "Part Load (LTL)",
+      title: "Part-load transport for smaller shipments.",
+      desc: "Cost-effective transport for smaller consignments. We combine compatible loads so you pay only for the space you use, with safe delivery to your destination.",
+      buttons: [
+        {
+          label: "Learn More",
+          primary: true,
+          className: "arrow-loop",
+          href: "/services/part-load",
+        },
+      ],
     },
     {
-      image: "/web-apps-2.webp",
-      tag: "Web Apps",
-      title: "Apps that solve problems.",
-      desc: "Custom dashboards & automation tools…",
-      buttons: [{ label: "View Apps", primary: true, className: "arrow-loop" }],
+      image: "/full_load.jpg",
+      tag: "Full Truck Load (FTL)",
+      title: "Full truck load for bigger moves.",
+      desc: "Dedicated vehicles for your goods only. Ideal for bulk, urgent or high-value shipments that need faster, direct delivery across India.",
+      buttons: [
+        {
+          label: "Learn More",
+          primary: true,
+          className: "arrow-loop",
+          href: "/services/full-truck-load",
+        },
+      ],
     },
     {
-      image: "/WEBP_UIUX-service.webp",
-      tag: "Design",
-      title: "Modern UI/UX that converts.",
-      desc: "Human-centered design systems…",
-      buttons: [{ label: "See Designs", primary: true, className: "arrow-loop" }],
+      image: "/safe_load.jpg",
+      tag: "Container & Closed Body",
+      title: "Safe & Secure Transport Across All Services.",
+      desc: "Containers and closed body trucks are used to ensure maximum protection for sensitive goods.",
+      buttons: [
+        {
+          label: "Learn More",
+          primary: true,
+          className: "arrow-loop",
+          href: "/services/container-trucks",
+        },
+      ],
     },
   ];
+
   return (
     <main className="relative">
       <section className="fixed inset-0 w-full h-screen overflow-hidden flex items-center justify-center z-0">
-        {/* FULL SCREEN BACKGROUND IMAGE */}
         <Image
-          src="/home-1.png"
+          src="/truck_banner.jpg"
           alt="Home"
           fill
           priority
-          className="object-cover w-full h-full"
+          className="object-contain w-full h-full"
         />
 
-        {/* WHITE OVERLAY (ADJUSTABLE) */}
-        <div className="absolute inset-0 bg-white/70" />
+        {/* WHITE OVERLAY */}
+        <div className="absolute inset-0 bg-white/80" />
 
         {/* TEXT CONTENT */}
-        <div className="relative z-20 text-center px-6 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight secretWeapon">
-            You’ve found your digital{" "}
-            <span className="secretWeapon">secret weapon.</span>
+        <div className="absolute z-20 text-center px-6 max-w-4xl">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight secretWeapon">
+            Welcome to SK Transport Services
           </h1>
 
-          <p className="text-lg md:text-xl mt-4 font-semibold text-gray-700">
-            <span className="foundText block">
-              Small by choice. Small by choice. Sharp by design.
-            </span>
+          <p className="text-base md:text-lg mt-4 foundText leading-relaxed max-w-3xl mx-auto">
+            We provide reliable, safe, and on-time transport solutions across
+            India. From part-load to full-load services, our experienced team
+            ensures smooth movement of goods with complete care and
+            transparency.
+          </p>
 
-            <span className="greyGradient block mt-2">
-              We build websites and apps,
-            </span>
-
-            <span className="secretWeapon block">
-              with real UX thinking baked in.
+          <p className="text-base md:text-lg mt-3 secretWeapon">
+            With All India Permit vehicles, we deliver your cargo —
+            <span className="font-semibold">
+              {" "}
+              anywhere, anytime, without hassle.
             </span>
           </p>
 
@@ -80,12 +109,10 @@ export default function HomePage() {
           >
             Let&apos;s chat!
           </Link>
-
         </div>
       </section>
 
       <div className="h-screen"></div>
-
 
       <div className="relative w-full z-20 pointer-events-none mb-0 overflow-visible">
         <svg className="block w-full" viewBox="0 0 1920 260">
@@ -121,22 +148,21 @@ export default function HomePage() {
       <section className="bg-white relative z-30 pt-0">
         <div className="max-w-6xl mx-auto px-4 py-5 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-normal text-blue-900 mb-4 secretWeapon">
-              A modern{" "}
+            <h1 className="text-3xl md:text-5xl font-extrabold leading-normal secretWeapon mb-4">
+              A reliable{" "}
               <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-blue-200 to-blue-600 inline-flex items-center">
-                design
+                transport
               </span>{" "}
               &amp;{" "}
               <span className="px-2 py-1 rounded-lg text-white font-bold bg-linear-to-r from-red-300 to-orange-600 inline-flex items-center">
-                development
+                logistics
               </span>{" "}
               partner.
             </h1>
 
-            <p className="text-lg md:text-xl text-blue-600 mb-4 semiBold">
-              Otterdev partners with brands in Singapore, New York, and Australia to build scalable websites,
-              ecommerce platforms, and apps powered by headless CMS like Sanity, Strapi, and frameworks such as
-              Next.js and Astro.
+            <p className="text-lg md:text-xl mb-4 text-[#162b5a] semiBold">
+              SK Transport Service delivers goods safely and on time across
+              India with both part-load and full-load transport options.
             </p>
 
             <a
@@ -149,7 +175,7 @@ export default function HomePage() {
 
           <div className="text-center">
             <Image
-              src="/home-2.jpg"
+              src="/truck- 2.jpg"
               alt="Services"
               width={600}
               height={450}
@@ -162,13 +188,12 @@ export default function HomePage() {
 
       <section className="bg-[#eef6ff] py-24 relative z-30">
         <div className="max-w-6xl mx-auto px-4">
-
           {/* Title */}
           <h1 className="text-center text-4xl md:text-5xl font-extrabold text-blue-900 mb-10">
-            Our Services
+            Our Transport Services
           </h1>
           <p className="text-center text-4xl md:text-5xl font-extrabold text-blue-900 mb-10 secretWeapon">
-            Where hard work gets done.
+            The right truck for every load.
           </p>
 
           {/* ⭐ BUTTON TABS */}
@@ -181,9 +206,10 @@ export default function HomePage() {
                   setSelectedIndex(index);
                 }}
                 className={`px-6 py-3 rounded-full text-sm font-semibold transition-all
-                  ${active === index
-                    ? "bg-blue-600 text-white shadow-lg scale-105"
-                    : "bg-white text-blue-700 hover:bg-blue-100"
+                  ${
+                    active === index
+                      ? "bg-blue-600 text-white shadow-lg scale-105"
+                      : "bg-white text-blue-700 hover:bg-blue-100"
                   }`}
               >
                 {c.title.split(" ")[0]}
@@ -193,13 +219,12 @@ export default function HomePage() {
 
           <div className="md:hidden relative overflow-hidden">
             <div
-              key={active} 
-              className="bg-white rounded-3xl p-6 shadow-lg 
+              key={active}
+              className="bg-white rounded-3xl p-6 shadow-lg
                         transition-all duration-500 ease-in-out
                         opacity-100 translate-y-0"
-
               style={{
-                animation: "fadeSlide 0.5s ease"
+                animation: "fadeSlide 0.5s ease",
               }}
             >
               <Image
@@ -207,14 +232,25 @@ export default function HomePage() {
                 alt="Service"
                 width={800}
                 height={400}
-                className="rounded-xl w-full h-auto object-cover"
+                className="rounded-xl w-full h-auto object-cover animate-fade-slide"
               />
 
-              <h4 className="text-teal-600 font-semibold mt-4">{cards[active].tag}</h4>
-              <h3 className="text-3xl font-extrabold text-blue-900 mt-2">
+              <h4 className="text-teal-600 font-semibold mt-4 animate-fade-slide">
+                {cards[active].tag}
+              </h4>
+              <h3 className="text-3xl font-extrabold text-blue-900 mt-2 animate-fade-slide">
                 {cards[active].title}
               </h3>
-              <p className="text-blue-800 mt-3">{cards[active].desc}</p>
+
+              {cards[active].subtitle && (
+                <p className="text-sm text-blue-600 mt-2 animate-fade-slide">
+                  {cards[active].subtitle}
+                </p>
+              )}
+
+              <p className="text-[#162b5a] mt-3 animate-fade-slide">
+                {cards[active].desc}
+              </p>
 
               <div className="flex gap-4 mt-4">
                 {cards[active].buttons.map((btn, j) => (
@@ -245,24 +281,33 @@ export default function HomePage() {
                   key={i}
                   className="min-w-[90%] bg-white rounded-3xl p-10 mr-6"
                 >
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="flex justify-center items-center h-full">
+                    <div className="flex justify-center items-center h-[320px]">
                       <Image
                         src={card.image}
                         alt="Service"
                         width={800}
                         height={400}
-                        className="rounded-xl w-full h-full object-cover"
+                        className="rounded-xl max-h-full max-w-full object-contain animate-fade-slide"
                       />
                     </div>
 
                     <div className="flex flex-col justify-center text-left">
-                      <h4 className="text-teal-600 font-semibold mb-2">{card.tag}</h4>
-                      <h3 className="text-3xl font-extrabold text-blue-900 mb-4">
+                      <h4 className="text-teal-600 font-semibold mb-2 animate-fade-slide">
+                        {card.tag}
+                      </h4>
+                      <h3 className="text-3xl font-extrabold text-blue-900 mb-2 animate-fade-slide">
                         {card.title}
                       </h3>
-                      <p className="text-blue-800 mb-6">{card.desc}</p>
+
+                      {card.subtitle && (
+                        <p className="text-sm text-blue-600 font-medium mb-4 animate-fade-slide">
+                          {card.subtitle}
+                        </p>
+                      )}
+                      <p className="text-[#162b5a] mb-6 animate-fade-slide">
+                        {card.desc}
+                      </p>
 
                       <div className="flex gap-4">
                         {card.buttons.map((btn, j) => (
@@ -284,106 +329,10 @@ export default function HomePage() {
                       </div>
                     </div>
                   </div>
-
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-linear-to-t from-[#eef6ff] via-white to-white py-24 relative z-30 overflow-visible">
-        <div className="max-w-6xl mx-auto px-4 overflow-visible">
-
-          {/* Title */}
-          <div className="text-center mb-16">
-            <p className="text-blue-500 font-semibold text-lg">Case Studies</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-blue-900 secretWeapon">
-              Brands we have{" "}
-              <span className="bg-[#fac5a9eb] px-2 rounded-lg  text-white">impacted.</span>
-            </h2>
-          </div>
-
-          <div className="relative overflow-visible">
-            <div className="overflow-visible pb-8">
-              <div
-                className="
-                  flex gap-10 overflow-x-auto overflow-y-visible
-                  scroll-smooth snap-x snap-mandatory
-                  no-scrollbar py-5
-                "
-              >
-                {[
-                  {
-                    title: "Redsbaby – Launching International Ecommerce",
-                    tags: ["Case Study", "Sanity CMS", "E-Commerce"],
-                    img: "/Ecommerce.webp",
-                    bgClass: "bg-[#e6f2fb]"
-                  },
-                  {
-                    title: "Migrating Ciberspring from WordPress to Sanity",
-                    tags: ["Corporate Website", "Case Study"],
-                    img: "/Brand Websites.webp",
-                    bgClass: "bg-[#fff3eb]"
-                  },
-                  {
-                    title: "Empowering Moom with Shopify Rebuild",
-                    tags: ["Web Apps", "E-Commerce"],
-                    img: "/web-apps-2.webp",
-                    bgClass: "bg-[#f3ecff]"
-                  },
-                  {
-                    title: "Transforming Hospital Experience using NextJS",
-                    tags: ["Sanity CMS", "Case Study"],
-                    img: "/WEBP_UIUX-service.webp",
-                    bgClass: "bg-[#eef6ff]"
-                  },
-                ].map((item, index) => (
-                  <article
-                    key={index}
-                    className={`
-                      min-w-[300px] md:min-w-[360px] 
-                      ${item.bgClass} border border-blue-100 rounded-3xl  
-                      p-6 snap-start
-                      transition-all duration-300
-                      hover:-translate-y-4 hover:shadow-[0px_30px_60px_rgba(16,24,40,0.12)]
-                      relative hover:z-40
-                    `}
-                  >
-                    <h3 className="text-blue-900 text-xl font-bold mb-3 leading-snug">
-                      {item.title}
-                    </h3>
-
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {item.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 bg-white text-blue-700 rounded-full text-xs border border-blue-200"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="relative rounded-xl overflow-hidden mb-4">
-                      <Image
-                        src={item.img}
-                        width={700}
-                        height={420}
-                        alt={`case ${index}`}
-                        className="w-full h-auto object-cover block"
-                      />
-                    </div>
-
-                    <a className="arrow-loop flex items-center text-blue-600 font-semibold mt-3 cursor-pointer">
-                      Read More
-                    </a>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
     </main>
